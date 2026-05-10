@@ -1,0 +1,313 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "NeueMontreal";
+  src: url("./assets/fonts/NeueMontreal-Bold.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeueMontreal";
+  src: url("./assets/fonts/NeueMontreal-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+  background: #050505;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+body {
+  color: #f7f4ed;
+  cursor: none;
+  font-family: "NeueMontreal", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+a,
+button {
+  cursor: none;
+}
+
+::selection {
+  background: #f7f4ed;
+  color: #050505;
+}
+
+.webgl-background {
+  height: 100%;
+  inset: 0;
+  opacity: 0.32;
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+  z-index: 0;
+}
+
+.main-content {
+  min-height: 175vh;
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  will-change: opacity;
+  z-index: 2;
+}
+
+.main-content::before {
+  background:
+    radial-gradient(circle at 50% 28%, rgba(247, 244, 237, 0.12), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 44%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.hero-section {
+  display: grid;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 5rem 1.2rem 4rem;
+  place-items: center;
+}
+
+.hero {
+  display: grid;
+  gap: 1.15rem;
+  justify-items: center;
+  position: relative;
+  text-align: center;
+  will-change: transform;
+}
+
+.hero-kicker {
+  color: rgba(247, 244, 237, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  color: #f7f4ed;
+  font-size: clamp(80px, 10vw, 220px);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.9;
+  text-align: center;
+  text-transform: uppercase;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  max-width: 42rem;
+  overflow: hidden;
+  text-align: center;
+  will-change: transform, opacity, filter;
+}
+
+.hero-meta p,
+.content-band p,
+.content-band a {
+  color: rgba(247, 244, 237, 0.66);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hero-meta p {
+  border: 1px solid rgba(247, 244, 237, 0.18);
+  border-radius: 999px;
+  padding: 0.72rem 0.9rem;
+}
+
+.content-band {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  min-height: 75vh;
+  padding: 4rem;
+  position: relative;
+  will-change: transform, opacity, filter;
+  z-index: 2;
+}
+
+.content-band p {
+  color: rgba(247, 244, 237, 0.78);
+  font-size: 1rem;
+  line-height: 1.2;
+  max-width: 31rem;
+}
+
+.content-band a {
+  border-bottom: 1px solid rgba(247, 244, 237, 0.78);
+  color: #f7f4ed;
+  padding-bottom: 0.28rem;
+  text-decoration: none;
+}
+
+.loader-shell {
+  align-items: center;
+  background: #050505;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  transform: translateZ(0);
+  will-change: transform;
+  z-index: 9999;
+}
+
+.counter {
+  color: rgba(247, 244, 237, 0.48);
+  font-size: clamp(5rem, 17vw, 16rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.9;
+  left: 50%;
+  min-width: 0;
+  opacity: 1;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4ch;
+  will-change: transform, opacity, filter;
+  z-index: 3;
+}
+
+.loader-overlay {
+  background: #f7f4ed;
+  inset: 0;
+  position: absolute;
+  transform: translateY(100%);
+  will-change: transform;
+  z-index: 4;
+}
+
+.loader-veil {
+  background: #050505;
+  inset: 0;
+  opacity: 1;
+  position: absolute;
+  will-change: opacity, transform;
+  z-index: 1;
+}
+
+.film-grain {
+  animation: grain 0.25s steps(2) infinite;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  inset: -8%;
+  opacity: 0.03;
+  pointer-events: none;
+  position: fixed;
+  z-index: 99999;
+}
+
+.cursor {
+  background: #fff;
+  border-radius: 9999px;
+  height: 20px;
+  left: 0;
+  mix-blend-mode: difference;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 20px;
+  z-index: 100000;
+  will-change: transform;
+}
+
+@keyframes grain {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(2%, -3%, 0);
+  }
+
+  50% {
+    transform: translate3d(-2%, 3%, 0);
+  }
+
+  75% {
+    transform: translate3d(1%, -2%, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes loader-noise {
+  0% {
+    background-position: center, 0 0, center;
+  }
+
+  50% {
+    background-position: center, 12px -18px, center;
+  }
+
+  100% {
+    background-position: center, -14px 10px, center;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-section {
+    padding-inline: 1rem;
+  }
+
+  .hero-title,
+  .counter {
+    font-size: clamp(4.8rem, 22vw, 7rem);
+  }
+
+  .content-band {
+    align-items: start;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+}
