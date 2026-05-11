@@ -21,6 +21,16 @@ export default function Cursor() {
     const onMouseMove = (event) => {
       xTo(event.clientX)
       yTo(event.clientY)
+      const hovered = document.elementFromPoint(event.clientX, event.clientY)
+      if (
+        hovered?.closest?.(
+          "[data-cursor-invert], .counter, h1, h2, h3, h4, h5, h6, p, a, li, .site-nav-logo, .intro-label, .reachout-label, .kinetic-marquee-loop"
+        )
+      ) {
+        cursor.classList.add("is-invert")
+      } else {
+        cursor.classList.remove("is-invert")
+      }
       gsap.to(cursor, {
         opacity: 1,
         duration: 0.25,
@@ -28,7 +38,8 @@ export default function Cursor() {
       })
     }
     const onMouseOver = (event) => {
-      if (event.target.closest("a, button")) {
+      const target = event.target instanceof Element ? event.target : null
+      if (target?.closest("a, button")) {
         gsap.to(cursor, {
           scale: 3.6,
           duration: 0.35,
@@ -37,7 +48,8 @@ export default function Cursor() {
       }
     }
     const onMouseOut = (event) => {
-      if (event.target.closest("a, button")) {
+      const target = event.target instanceof Element ? event.target : null
+      if (target?.closest("a, button")) {
         gsap.to(cursor, {
           scale: 1,
           duration: 0.35,

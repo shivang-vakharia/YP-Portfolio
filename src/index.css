@@ -84,6 +84,53 @@ button {
   position: absolute;
 }
 
+.site-nav {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  opacity: 0;
+  padding: 1.4rem 2rem 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateY(-110%);
+  transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  mix-blend-mode: difference;
+  z-index: 120;
+}
+
+.site-nav.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.site-nav-logo,
+.site-nav-links a {
+  color: #f7f4ed;
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.site-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.site-nav-links a {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  opacity: 0.92;
+}
+
 .hero-section {
   display: grid;
   min-height: 100vh;
@@ -168,18 +215,397 @@ button {
   z-index: 2;
 }
 
-.content-band p {
-  color: rgba(247, 244, 237, 0.78);
-  font-size: 1rem;
-  line-height: 1.2;
-  max-width: 31rem;
+.kinetic-section {
+  display: block;
+  min-height: 118vh;
+  overflow: hidden;
+  padding: 2rem 4rem 5rem 4rem;
+  position: relative;
+  width: 100%;
 }
 
-.content-band a {
+.kinetic-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3.25rem;
+  left: 4rem;
+  max-width: 29rem;
+  position: absolute;
+  top: 34%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.kinetic-copy-availability,
+.kinetic-copy-description {
+  color: rgba(247, 244, 237, 0.74);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+  padding-left: 2rem;
+  text-transform: none;
+}
+
+.kinetic-copy-availability {
+  max-width: 15rem;
+}
+
+.kinetic-copy-description {
+  max-width: 26rem;
+  margin-top: 0.8rem;
+}
+
+.kinetic-image-shell {
+  display: block;
+  margin-left: auto;
+  margin-right: 1.5rem;
+  perspective: 1400px;
+  position: relative;
+  width: min(50vw, 560px);
+  z-index: 2;
+}
+
+.kinetic-image-card {
+  border: 1px solid rgba(247, 244, 237, 0.16);
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.kinetic-image-card::after {
+  background: linear-gradient(165deg, rgba(247, 244, 237, 0.28), transparent 44%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.kinetic-image {
+  aspect-ratio: 4 / 5;
+  display: block;
+  filter: grayscale(1) contrast(1.1) brightness(0.9);
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.kinetic-marquee {
+  left: 0;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mix-blend-mode: difference;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 72%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 4;
+}
+
+.kinetic-marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.kinetic-marquee-loop {
+  align-items: center;
+  color: #f7f4ed;
+  display: inline-flex;
+  font-size: clamp(2.9rem, 8vw, 8.4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.kinetic-marquee-loop span {
+  padding-right: 1.5rem;
+}
+
+.kinetic-marquee-loop span::after {
+  content: " - ";
+  opacity: 0.7;
+  padding-left: 1.5rem;
+}
+
+.intro-section {
+  margin: 0 auto;
+  max-width: 1520px;
+  padding: 5rem 4rem 6rem;
+  position: relative;
+  z-index: 3;
+}
+
+.intro-label-wrap {
+  margin-bottom: 6rem;
+  text-align: left;
+}
+
+.intro-label {
+  color: #f7f4ed;
+  display: inline-block;
+  font-size: clamp(3rem, 7vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.intro-char-wrap {
+  display: inline-block;
+  margin-left: -0.02em;
+  overflow: hidden;
+  padding-right: 0.02em;
+}
+
+.intro-char {
+  display: inline-block;
+}
+
+.intro-content {
+  align-items: flex-end;
+  display: flex;
+  gap: 10rem;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+
+.intro-lead {
+  color: rgba(247, 244, 237, 0.8);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.28;
+  max-width: 21rem;
+}
+
+.intro-statement {
+  color: #f7f4ed;
+  font-size: clamp(2.5rem, 4.9vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  max-width: 73rem;
+  text-transform: none;
+}
+
+.intro-tools {
+  display: flex;
+  gap: 9rem;
+}
+
+.intro-tools-title {
+  color: rgba(247, 244, 237, 0.84);
+  flex-shrink: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+}
+
+.intro-tools-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+}
+
+.intro-tool-item h3 {
+  color: #f7f4ed;
+  font-size: clamp(1.8rem, 2.7vw, 3.3rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  margin-bottom: 1.1rem;
+}
+
+.intro-tool-item p {
+  color: rgba(247, 244, 237, 0.72);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.93rem;
+  font-weight: 700;
+  line-height: 1.32;
+  max-width: 23rem;
+}
+
+.reachout-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 96vh;
+  margin-top: 8rem;
+  padding: 2.5rem 4rem 3rem;
+  position: relative;
+  z-index: 3;
+}
+
+.reachout-head {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-bottom: 5.4rem;
+}
+
+.reachout-availability {
+  align-self: flex-start;
+  color: rgba(247, 244, 237, 0.76);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 15rem;
+  text-align: left;
+}
+
+.reachout-availability span {
+  display: block;
+}
+
+.reachout-label-wrap {
+  max-width: 66rem;
+  padding-left: 3rem;
+  text-align: right;
+  width: 100%;
+}
+
+.reachout-label {
+  color: #f7f4ed;
+  display: inline-flex;
+  flex-direction: column;
+  font-size: clamp(3.5rem, 8vw, 10rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.86;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.reach-char-wrap {
+  display: inline-block;
+  margin-left: -0.02em;
+  overflow: hidden;
+  padding-right: 0.02em;
+}
+
+.reach-char {
+  display: inline-block;
+}
+
+.reachout-content {
+  display: flex;
+  gap: 24rem;
+  margin-bottom: 3.3rem;
+}
+
+.reachout-meta-left {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 3.9rem;
+  margin-top: 1.3rem;
+  padding-left: 1.2rem;
+}
+
+.reachout-geo {
+  display: flex;
+  flex-direction: column;
+}
+
+.reachout-time {
+  color: rgba(247, 244, 237, 0.66);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.reachout-geo p {
+  color: rgba(247, 244, 237, 0.9);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 0.8rem;
+  padding-left: 0;
+}
+
+.reachout-message {
+  max-width: 62rem;
+}
+
+.reachout-message p {
+  color: #f7f4ed;
+  font-size: clamp(2.2rem, 4vw, 5.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  margin-bottom: 0.9rem;
+  max-width: 58rem;
+}
+
+.reachout-message {
+  margin-left: -0.15rem;
+  max-width: 62rem;
+}
+
+.reachout-message p {
+  letter-spacing: -0.03em;
+}
+
+.reachout-message a {
   border-bottom: 1px solid rgba(247, 244, 237, 0.78);
   color: #f7f4ed;
-  padding-bottom: 0.28rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1;
+  padding-bottom: 0.25rem;
   text-decoration: none;
+}
+
+.reachout-foot {
+  align-items: center;
+  display: flex;
+  gap: 7rem;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 5rem;
+}
+
+.reachout-credit,
+.reachout-grid-ui,
+.reachout-typo,
+.reachout-socials a {
+  color: rgba(247, 244, 237, 0.7);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.reachout-socials {
+  display: flex;
+  gap: 4.4rem;
+  margin-left: auto;
+}
+
+.reachout-socials a {
+  text-decoration: none;
+}
+
+.reachout-grid-ui {
+  margin-left: auto;
+}
+
+.reachout-typo {
+  margin-left: 2rem;
 }
 
 .loader-shell {
@@ -243,11 +669,12 @@ button {
 }
 
 .cursor {
-  background: #fff;
+  background: rgba(247, 244, 237, 0.85);
   border-radius: 9999px;
+  box-shadow: 0 0 0 0.5px rgba(247, 244, 237, 0.35);
   height: 20px;
   left: 0;
-  mix-blend-mode: difference;
+  mix-blend-mode: normal;
   opacity: 0;
   pointer-events: none;
   position: fixed;
@@ -255,6 +682,14 @@ button {
   width: 20px;
   z-index: 100000;
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.cursor.is-invert {
+  background: #fff;
+  mix-blend-mode: difference;
 }
 
 @keyframes grain {
@@ -294,6 +729,18 @@ button {
 }
 
 @media (max-width: 760px) {
+  .site-nav {
+    padding: 1rem;
+  }
+
+  .site-nav-logo {
+    font-size: 1.45rem;
+  }
+
+  .site-nav-links a {
+    font-size: 1rem;
+  }
+
   .hero-section {
     padding-inline: 1rem;
   }
@@ -303,11 +750,166 @@ button {
     font-size: clamp(4.8rem, 22vw, 7rem);
   }
 
-  .content-band {
-    align-items: start;
+  .kinetic-section {
+    min-height: 88vh;
+    padding: 1rem 1rem 3.5rem;
+  }
+
+  .kinetic-copy {
+    gap: 1.4rem;
+    left: 1rem;
+    max-width: 90vw;
+    position: relative;
+    top: auto;
+    transform: none;
+    z-index: 5;
+  }
+
+  .kinetic-copy-availability,
+  .kinetic-copy-description {
+    font-size: 0.85rem;
+    max-width: 100%;
+    padding-left: 1rem;
+  }
+
+  .kinetic-image-shell {
+    margin: 1.8rem auto 0;
+    width: min(94vw, 500px);
+  }
+
+  .kinetic-marquee-loop {
+    font-size: clamp(2.2rem, 12vw, 4rem);
+  }
+
+  .intro-section {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .intro-label-wrap {
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .intro-label {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .intro-content {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .intro-lead {
+    font-size: 0.86rem;
+    max-width: 100%;
+  }
+
+  .intro-statement {
+    font-size: clamp(2rem, 11vw, 3.4rem);
+    max-width: 100%;
+  }
+
+  .intro-tools {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .intro-tools-title {
+    font-size: 0.85rem;
+  }
+
+  .intro-tools-grid {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .intro-tool-item h3 {
+    font-size: clamp(1.6rem, 9vw, 2.3rem);
+    margin-bottom: 0.7rem;
+  }
+
+  .intro-tool-item p {
+    font-size: 0.82rem;
+    max-width: 100%;
+  }
+
+  .reachout-section {
+    min-height: 92vh;
+    margin-top: 5rem;
+    padding: 2rem 1rem 2.3rem;
+  }
+
+  .reachout-head {
+    align-items: flex-start;
     flex-direction: column;
     gap: 2rem;
-    justify-content: center;
-    padding: 2rem 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .reachout-label-wrap {
+    max-width: 38rem;
+    text-align: right;
+    width: 100%;
+  }
+
+  .reachout-label {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .reachout-content {
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .reachout-meta-left {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .reachout-availability {
+    text-align: left;
+  }
+
+  .reachout-geo p {
+    margin-top: 0.7rem;
+  }
+
+  .reachout-message {
+    margin-left: 0;
+  }
+
+  .reachout-message p {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+    max-width: 100%;
+  }
+
+  .reachout-message a {
+    font-size: 0.9rem;
+  }
+
+  .reachout-foot {
+    gap: 1.4rem 2rem;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-start;
+    padding-top: 4rem;
+  }
+
+  .reachout-socials {
+    gap: 1.8rem;
+  }
+
+  .reachout-grid-ui {
+    display: none;
+    margin-left: 0;
+  }
+
+  .reachout-credit,
+  .reachout-typo,
+  .reachout-socials a {
+    font-size: 0.82rem;
   }
 }

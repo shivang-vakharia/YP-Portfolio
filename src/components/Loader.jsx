@@ -179,7 +179,7 @@ export default function Loader({ onComplete }) {
   return (
     <div ref={loaderRef} className="loader-shell" aria-hidden="true">
       <div ref={veilRef} className="loader-veil" />
-      <div ref={counterRef} className="counter">
+      <div ref={counterRef} className="counter" data-cursor-invert="true">
         0%
       </div>
       <div ref={wipeRef} className="loader-overlay" />
